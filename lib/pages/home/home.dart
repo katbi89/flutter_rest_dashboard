@@ -1,9 +1,8 @@
-import 'package:dashboard/pages/category/category.dart';
-import 'package:dashboard/pages/config.dart';
-import 'package:dashboard/pages/delivery/delivery.dart';
-import 'package:dashboard/pages/drawer/mydrawer.dart';
-import 'package:dashboard/pages/food/food.dart';
-import 'package:dashboard/pages/users/users.dart';
+import 'package:flutter_rest_dashboard/pages/category/category.dart';
+import 'package:flutter_rest_dashboard/pages/config.dart';
+import 'package:flutter_rest_dashboard/pages/delivery/delivery.dart';
+import 'package:flutter_rest_dashboard/pages/drawer/mydrawer.dart';
+import 'package:flutter_rest_dashboard/pages/users/users.dart';
 
 import 'package:flutter/material.dart';
 

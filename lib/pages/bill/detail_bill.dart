@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:dashboard/pages/provider/loading.dart';
+import 'package:flutter_rest_dashboard/pages/provider/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../config.dart';

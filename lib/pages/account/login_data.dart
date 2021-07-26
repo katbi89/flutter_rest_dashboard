@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'package:dashboard/pages/home/home.dart';
+import 'package:flutter_rest_dashboard/pages/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-import 'package:dashboard/pages/config.dart';
+import 'package:flutter_rest_dashboard/pages/config.dart';
 import 'dart:async';
 
 Future<bool> loginUsers(
@@ -16,7 +16,7 @@ Future<bool> loginUsers(
       "&token=" +
       token;
 
-  http.Response respone = await http.get(url);
+  http.Response respone = await http.get(Uri.parse(url));
   if (json.decode(respone.body)["code"] == "200") {
     Map arr = json.decode(respone.body)["message"];
     SharedPreferences sh = await SharedPreferences.getInstance();

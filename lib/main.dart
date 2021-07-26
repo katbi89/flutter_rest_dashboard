@@ -1,11 +1,11 @@
-import 'package:dashboard/pages/account/login.dart';
-import 'package:dashboard/pages/home/home.dart';
-import 'package:dashboard/pages/provider/loading.dart';
+import 'package:flutter_rest_dashboard/pages/account/login.dart';
+import 'package:flutter_rest_dashboard/pages/home/home.dart';
+import 'pages/provider/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:dashboard/pages/config.dart';
+import 'package:flutter_rest_dashboard/pages/config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

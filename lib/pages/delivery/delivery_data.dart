@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dashboard/pages/delivery/edit.dart';
-import 'package:dashboard/pages/config.dart';
-import 'package:dashboard/pages/provider/loading.dart';
+import 'package:flutter_rest_dashboard/pages/delivery/edit.dart';
+import 'package:flutter_rest_dashboard/pages/config.dart';
+import 'package:flutter_rest_dashboard/pages/provider/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';

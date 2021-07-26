@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:dashboard/pages/component/progress.dart';
-import 'package:dashboard/pages/provider/loading.dart';
-import 'package:dashboard/pages/food/food.dart';
+import 'package:flutter_rest_dashboard/pages/component/progress.dart';
+import 'package:flutter_rest_dashboard/pages/provider/loading.dart';
+import 'package:flutter_rest_dashboard/pages/food/food.dart';
 import 'package:flutter/material.dart';
-import 'package:dashboard/pages/config.dart';
+import 'package:flutter_rest_dashboard/pages/config.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';

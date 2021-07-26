@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dashboard/pages/component/progress.dart';
-import 'package:dashboard/pages/provider/loading.dart';
-import 'package:dashboard/pages/delivery/delivery_data.dart';
+import 'package:flutter_rest_dashboard/pages/component/progress.dart';
+import 'package:flutter_rest_dashboard/pages/provider/loading.dart';
+import 'package:flutter_rest_dashboard/pages/delivery/delivery_data.dart';
 import 'package:flutter/material.dart';
-import 'package:dashboard/pages/config.dart';
-import 'package:dashboard/pages/function.dart';
+import 'package:flutter_rest_dashboard/pages/config.dart';
+import 'package:flutter_rest_dashboard/pages/function.dart';
 import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
 import 'dart:io';

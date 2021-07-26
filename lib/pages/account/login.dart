@@ -1,9 +1,8 @@
-import 'package:dashboard/pages/component/progress.dart';
-import 'package:dashboard/pages/config.dart';
-import 'package:dashboard/pages/provider/loading.dart';
+import 'package:flutter_rest_dashboard/pages/component/progress.dart';
+import 'package:flutter_rest_dashboard/pages/config.dart';
+import 'package:flutter_rest_dashboard/pages/provider/loading.dart';
 import 'package:flutter/material.dart';
-import 'package:dashboard/pages/account/login_data.dart';
-import 'package:dashboard/pages/home/home.dart';
+import 'package:flutter_rest_dashboard/pages/account/login_data.dart';
 import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
 
@@ -71,6 +70,7 @@ class _LoginState extends State<Login> {
                           controller: txtmobile,
                           decoration: InputDecoration(
                               hintText: "الموبايل", border: InputBorder.none),
+                          // ignore: missing_return
                           validator: (String value) {
                             if (value.isEmpty) {
                               return "الرجاء ادخال الموبايل";
@@ -93,6 +93,7 @@ class _LoginState extends State<Login> {
                                 decoration: InputDecoration(
                                     hintText: "كلمة المرور",
                                     border: InputBorder.none),
+                                // ignore: missing_return
                                 validator: (String value) {
                                   if (value.isEmpty || value.length < 6) {
                                     return "الرجاء ادخال كلمة المرور";

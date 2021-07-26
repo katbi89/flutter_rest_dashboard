@@ -1,4 +1,4 @@
-# dashboard
+# flutter_rest_dashboard
 
 A new Flutter project.
 

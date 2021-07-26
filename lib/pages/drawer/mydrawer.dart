@@ -1,6 +1,6 @@
-import 'package:dashboard/pages/account/login.dart';
-import 'package:dashboard/pages/bill/bill.dart';
-import 'package:dashboard/pages/config.dart';
+import 'package:flutter_rest_dashboard/pages/account/login.dart';
+import 'package:flutter_rest_dashboard/pages/bill/bill.dart';
+import 'package:flutter_rest_dashboard/pages/config.dart';
 import 'package:flutter/material.dart';
 //import 'package:restaurant/pages/account/changepassword.dart';
 //import 'package:restaurant/pages/account/myprofile.dart';
@@ -34,11 +34,11 @@ class _MyDrawerState extends State<MyDrawer> {
             children: <Widget>[
               UserAccountsDrawerHeader(
                 accountName: Text(
-                  "Thaer",
+                  "Bilal",
                   style: TextStyle(fontSize: 20.0, color: Colors.black),
                 ),
                 accountEmail: Text(
-                  "thaer@gmail.com",
+                  "katbi89@gmail.com",
                   style: TextStyle(color: Colors.grey),
                 ),
                 currentAccountPicture: GestureDetector(
