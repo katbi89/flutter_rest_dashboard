@@ -19,7 +19,7 @@ Future<bool> SaveData(Map arrInsert, String urlPage, BuildContext context,
     } else {
       Navigator.pop(context);
     }
-    print("success");
+    print("Success");
     return true;
   } else {
     print("Failer");
@@ -55,7 +55,7 @@ Future<bool> uploadFileWithData(
   var response = await request.send();
 
   if (response.statusCode == 200) {
-    print("Send succefull");
+    print("Send Successful");
     if (type == "update") {
       Navigator.pop(context);
     } else if (type == "insert") {
@@ -65,7 +65,6 @@ Future<bool> uploadFileWithData(
     return true;
   } else {
     return false;
-    print("not send");
   }
 }
 

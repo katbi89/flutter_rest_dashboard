@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
 import 'package:http/http.dart' as http;
 import 'package:async/async.dart';
-import '../function.dart';
+import 'package:flutter_rest_dashboard/pages/function.dart';
 import 'package:path/path.dart';
 
 class AddFood extends StatefulWidget {
