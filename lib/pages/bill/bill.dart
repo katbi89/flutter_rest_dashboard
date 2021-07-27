@@ -27,6 +27,8 @@ class _BillState extends State<Bill> {
       billList.add(new BillData(
         bil_id: arr[i]["bil_id"],
         cus_id: arr[i]["cus_id"],
+        cus_name: arr[i]["cus_name"],
+        cus_mobile: arr[i]["cus_mobile"],
         bil_address: arr[i]["bil_address"],
         del_id: arr[i]["del_id"],
         bil_regdate: arr[i]["bil_regdate"],
@@ -163,30 +165,59 @@ class SingleBill extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => DetailBill(
-                      bil_id: bill.bil_id,
-                      bil_regdate: bill.bil_regdate,
-                    )));
+                    bil_id: bill.bil_id,
+                    bil_regdate: bill.bil_regdate,
+                    del_id: bill.del_id)));
       },
       child: Card(
         child: Container(
           padding: EdgeInsets.all(10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
             children: [
-              new Text(
-                bill.bil_regdate,
-                style: TextStyle(
-                    fontFamily: "arial", fontSize: 16, color: Colors.grey),
-              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   new Text(
-                    bill.bil_id,
+                    bill.bil_regdate,
                     style: TextStyle(
-                        fontFamily: "arial", color: Colors.red, fontSize: 16),
+                        fontFamily: "arial", fontSize: 16, color: Colors.grey),
                   ),
-                  new Text("  "),
-                  new Text("رقم الفاتورة"),
+                  Row(
+                    children: [
+                      new Text(
+                        bill.bil_id,
+                        style: TextStyle(
+                            fontFamily: "arial",
+                            color: Colors.red,
+                            fontSize: 16),
+                      ),
+                      new Text("  "),
+                      new Text("رقم الفاتورة"),
+                    ],
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  new Text(
+                    "Mob: " + bill.cus_mobile,
+                    style: TextStyle(
+                        fontFamily: "arial", fontSize: 16, color: Colors.grey),
+                  ),
+                  Row(
+                    children: [
+                      new Text(
+                        bill.cus_name,
+                        style: TextStyle(
+                            fontFamily: "arial",
+                            color: Colors.red,
+                            fontSize: 16),
+                      ),
+                      new Text("  "),
+                      new Text("اسم الزبون"),
+                    ],
+                  ),
                 ],
               ),
             ],

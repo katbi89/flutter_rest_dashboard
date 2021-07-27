@@ -1,4 +1,7 @@
 import 'dart:ui';
+import 'package:dropdown_search/dropdown_search.dart';
+import 'package:flutter_rest_dashboard/pages/bill/bill.dart';
+import 'package:flutter_rest_dashboard/pages/delivery/add.dart';
 import 'package:flutter_rest_dashboard/pages/provider/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,12 +11,14 @@ import '../function.dart';
 import 'detail_billData.dart';
 
 List<DetailBillData> billList = null;
+List<DeliverySearch> delList = null;
 int sum = 0;
 
 class DetailBill extends StatefulWidget {
   final String bil_id;
   final String bil_regdate;
-  DetailBill({this.bil_id, this.bil_regdate});
+  final String del_id;
+  DetailBill({this.bil_id, this.bil_regdate, this.del_id});
   @override
   _BillState createState() => _BillState();
 }
@@ -23,6 +28,7 @@ class _BillState extends State<DetailBill> {
   GlobalKey<RefreshIndicatorState> refreshKey;
   int i = 0;
   bool loadingList = false;
+  int indexDel = 0;
 
   void getDatabill(int count, String strSearch) async {
     loadingList = true;
@@ -45,18 +51,42 @@ class _BillState extends State<DetailBill> {
     setState(() {});
   }
 
+  void getDataDelivery() async {
+    loadingList = true;
+    setState(() {});
+    List arr = await getDataDropDown("bill/get_delivery.php", "");
+    delList = new List<DeliverySearch>();
+    delList.add(new DeliverySearch(
+      del_id: "0",
+      del_name: "حدد الدليفري المطلوب",
+    ));
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i]["del_id"] == widget.del_id) {
+        indexDel = i + 1;
+      }
+      delList.add(new DeliverySearch(
+        del_id: arr[i]["del_id"],
+        del_name: arr[i]["del_name"],
+      ));
+    }
+    loadingList = false;
+    setState(() {});
+  }
+
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     myScroll.dispose();
     billList.clear();
+    delList.clear();
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    getDataDelivery();
     sum = 0;
     _appBarTitle =
         new Text("تفاصيل الطلبية", style: TextStyle(color: Colors.black));
@@ -80,6 +110,30 @@ class _BillState extends State<DetailBill> {
   );
   Widget _appBarTitle;
 
+  Widget _customDropDownDelivery(
+      BuildContext context, DeliverySearch item, String itemDesignation) {
+    if (item == null) {
+      return Container();
+    }
+    return Container(
+      child: ListTile(
+        contentPadding: EdgeInsets.all(0),
+        title: Text(item.del_name),
+      ),
+    );
+  }
+
+  addDeliveryToBill(String del_id, String bil_id) async {
+    if (del_id != "0") {
+      Map arr = {
+        "bil_id": bil_id,
+        "del_id": del_id,
+      };
+      bool res = await SaveData(
+          arr, "bill/add_delivery_bill.php", context, () => Bill(), "update");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var myProvider = Provider.of<LoadingControl>(context);
@@ -101,7 +155,7 @@ class _BillState extends State<DetailBill> {
           body: ListView(
             children: [
               Container(
-                height: 130,
+                height: 250,
                 padding: EdgeInsets.all(10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -113,6 +167,31 @@ class _BillState extends State<DetailBill> {
                         style: TextStyle(fontFamily: "arial", fontSize: 16)),
                     Text("اجمالي الفاتورة" + " " + sum.toString(),
                         style: TextStyle(fontFamily: "arial", fontSize: 16)),
+                    Container(
+                      child: Text("الدليفري"),
+                    ),
+                    delList == null || delList.length == 0
+                        ? Text("")
+                        : DropdownSearch<DeliverySearch>(
+                            searchBoxController:
+                                TextEditingController(text: ""),
+                            mode: Mode.BOTTOM_SHEET,
+                            showClearButton: true,
+                            showSearchBox: true,
+                            selectedItem: delList[indexDel],
+                            items: delList,
+                            itemAsString: (DeliverySearch del) => del.del_name,
+                            onChanged: (DeliverySearch data) {
+                              if (data != null) {
+                                print(data.del_id);
+                                addDeliveryToBill(
+                                  data.del_id,
+                                  widget.bil_id,
+                                );
+                              }
+                            },
+                            dropdownBuilder: _customDropDownDelivery,
+                          )
                   ],
                 ),
               ),
@@ -192,4 +271,10 @@ class SingleDetailBill extends StatelessWidget {
       ),
     );
   }
+}
+
+class DeliverySearch {
+  String del_id;
+  String del_name;
+  DeliverySearch({this.del_id, this.del_name});
 }

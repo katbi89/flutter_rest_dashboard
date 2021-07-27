@@ -71,7 +71,7 @@ Future<bool> uploadFileWithData(
 Future<List> getData(
     int count, String urlPage, String strSearch, String param) async {
   String url = path_api +
-      "${urlPage}?${param}txtsearch=${strSearch}&start=${count}&end=10&token=" +
+      "$urlPage?${param}txtsearch=$strSearch&start=$count&end=10&token=" +
       token;
   print(url);
   http.Response respone = await http.post(Uri.parse(url));
@@ -85,8 +85,22 @@ Future<List> getData(
   }
 }
 
+Future<List> getDataDropDown(String urlPage, String param) async {
+  String url = path_api + "$urlPage?${param}&token=" + token;
+  print(url);
+  http.Response respone = await http.post(Uri.parse(url));
+
+  if (json.decode(respone.body)["code"] == "200") {
+    {
+      List arr = (json.decode(respone.body)["message"]);
+      print(arr);
+      return arr;
+    }
+  }
+}
+
 Future<bool> deleteData(String col_id, String val_id, String urlPage) async {
-  String url = path_api + "${urlPage}?${col_id}=${val_id}&token=" + token;
+  String url = path_api + "$urlPage?$col_id=$val_id&token=" + token;
   print(url);
   http.Response respone = await http.post(Uri.parse(url));
 

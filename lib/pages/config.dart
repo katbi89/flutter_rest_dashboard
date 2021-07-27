@@ -6,8 +6,8 @@ SharedPreferences prefs;
 const Color primaryColor = Color(0xffFF0000);
 const String token = "wjeiwenwejwkejwke98w9e8wewnew8wehwenj232jh32j3h2j3h2j";
 
-final String path_api = "http://192.168.10.2/flutter_rest_api/api/";
-final String path_images = "http://192.168.10.2/flutter_rest_api/images/";
+final String path_api = "http://192.168.10.4/flutter_rest_api/api/";
+final String path_images = "http://192.168.10.4/flutter_rest_api/images/";
 
 String G_use_id_val = "";
 

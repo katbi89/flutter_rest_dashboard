@@ -5,6 +5,8 @@ class BillData {
   String bil_before_note;
   String bil_rate;
   String cus_id;
+  String cus_name;
+  String cus_mobile;
   String del_id;
   String bil_regdate;
 
@@ -16,5 +18,7 @@ class BillData {
       this.bil_rate,
       this.bil_regdate,
       this.cus_id,
+      this.cus_name,
+      this.cus_mobile,
       this.del_id});
 }
