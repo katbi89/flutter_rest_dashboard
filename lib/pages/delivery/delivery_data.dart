@@ -79,7 +79,11 @@ class SingleDelivery extends StatelessWidget {
               ),
               subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text(delivery.del_regdate)]),
+                  children: [
+                    Text(delivery.del_regdate == null
+                        ? ""
+                        : delivery.del_regdate)
+                  ]),
               trailing: Container(
                 width: 30.0,
                 child: Row(
